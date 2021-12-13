@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="468. 验证IP地址">
+<meta property="og:url" content="http://example.com/2021/06/06/468-%E9%AA%8C%E8%AF%81IP%E5%9C%B0%E5%9D%80/index.html">
+<meta property="og:site_name" content="Stwilld&#39;s blog">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-06-05T16:40:00.000Z">
+<meta property="article:modified_time" content="2021-12-11T13:34:02.094Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/06/06/468-验证IP地址/"/>
+
+
+
+
+
+  <title>468. 验证IP地址 | Stwilld's blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stwilld's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/06/468-%E9%AA%8C%E8%AF%81IP%E5%9C%B0%E5%9D%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stwilld's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">468. 验证IP地址</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-06T00:40:00+08:00">
+                2021-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<span id="more"></span>
+<p><strong>难度</strong> <code>medium</code><br>编写一个函数来验证输入的字符串是否是有效的 IPv4 或 IPv6 地址。</p>
+<p>IPv4 地址由十进制数和点来表示，每个地址包含4个十进制数，其范围为 0 - 255， 用(“.”)分割。比如，172.16.254.1；</p>
+<p>同时，IPv4 地址内的数不会以 0 开头。比如，地址 172.16.254.01 是不合法的。</p>
+<p>IPv6 地址由8组16进制的数字来表示，每组表示 16 比特。这些组数字通过 (“:”)分割。比如,  2001:0db8:85a3:0000:0000:8a2e:0370:7334 是一个有效的地址。而且，我们可以加入一些以 0 开头的数字，字母可以使用大写，也可以是小写。所以， 2001:db8:85a3:0:0:8A2E:0370:7334 也是一个有效的 IPv6 address地址 (即，忽略 0 开头，忽略大小写)。</p>
+<p>然而，我们不能因为某个组的值为 0，而使用一个空的组，以至于出现 (::) 的情况。 比如， 2001:0db8:85a3::8A2E:0370:7334 是无效的 IPv6 地址。</p>
+<p>同时，在 IPv6 地址中，多余的 0 也是不被允许的。比如， 02001:0db8:85a3:0000:0000:8a2e:0370:7334 是无效的。</p>
+<p>说明: 你可以认为给定的字符串里没有空格或者其他特殊字符。</p>
+<p>示例 1:</p>
+<p>输入: “172.16.254.1”</p>
+<p>输出: “IPv4”</p>
+<p>解释: 这是一个有效的 IPv4 地址, 所以返回 “IPv4”。<br>示例 2:</p>
+<p>输入: “2001:0db8:85a3:0:0:8A2E:0370:7334”</p>
+<p>输出: “IPv6”</p>
+<p>解释: 这是一个有效的 IPv6 地址, 所以返回 “IPv6”。<br>示例 3:</p>
+<p>输入: “256.256.256.256”</p>
+<p>输出: “Neither”</p>
+<p>解释: 这个地址既不是 IPv4 也不是 IPv6 地址。</p>
+<p><strong>解题思路</strong>：思路直接，情况需要全面考虑而已。<br>我们怎么样能快速的区别是IPv4或者IPv6呢，当然是通过中间的点或者冒号啦，所以我们首先在字符串中找冒号(当然你想找点也可以)，如果字符串中没有冒号，那么我们来验证其是否是IPv4，如果有冒号，我们就来验证其是否是IPv6.</p>
+<p>首先对于IPv4，我们先判断最后一位是不是”.”，如果是直接不符合，返回”Neither”，然后，我们将其以分隔符”.”进行分割，如果其数组长度超过4，说明是不是正确的地址。如果取出的字符串为空，说明两个点连在一起了，也不对。再有就是如果字符串长度大于1，且第一个字符是0，也不对。由于IPv4的地址在0到255之间，所以如果字符串长度大于3，也不正确。下面我们检查每一个字符，如果有不是数字的字符，返回Neither。最后我们再把字符串转为数字，如果不在0到255之间就是非法的。最后的最后，我们要保证cnt正好为4，而且最后一个字符不能是点，统统满足以上条件才是正确的IPv4地址。</p>
+<p>然后对于IPv6，我们也先判断最后一位是不是”:”，如果是直接不符合，返回”Neither”，然后，我们将其以分隔符”.”进行分割，如果其数组长度超过8，说明是不是正确的地址。如果取出的字符串为空，说明两个冒号连在一起了，也不对。面我们检查每一个字符，正确的字符应该是0到9之间的数字，或者a到f，或A到F之间的字符，如果出现了其他字符，返回Neither。最后的最后，我们要保证cnt正好为8，而且最后一个字符不能是冒号，统统满足以上条件才是正确的IPv6地址。</p>
+<p><strong>代码</strong> <code>t97 s96 java</code>  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">validIPAddress</span><span class="params">(String IP)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(IP.indexOf(<span class="string">&quot;.&quot;</span>)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(IP.charAt(IP.length()-<span class="number">1</span>)==<span class="string">&#x27;.&#x27;</span>) <span class="keyword">return</span> <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">            String[] strings = IP.split(<span class="string">&quot;\\.&quot;</span>);</span><br><span class="line">            <span class="comment">// System.out.println(strings.length);</span></span><br><span class="line">            <span class="keyword">if</span>(strings.length!=<span class="number">4</span>) <span class="keyword">return</span> <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">for</span>(String s: strings)&#123;</span><br><span class="line">                    <span class="comment">// System.out.println(s);</span></span><br><span class="line">                    <span class="keyword">if</span>(!isValid4(s)) <span class="keyword">return</span> <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;IPv4&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(IP.indexOf(<span class="string">&quot;:&quot;</span>)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(IP.charAt(IP.length()-<span class="number">1</span>)==<span class="string">&#x27;:&#x27;</span>) <span class="keyword">return</span> <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">            String[] strings = IP.split(<span class="string">&quot;\\:&quot;</span>);</span><br><span class="line">            <span class="comment">// System.out.println(strings.length);</span></span><br><span class="line">            <span class="keyword">if</span>(strings.length!=<span class="number">8</span>) <span class="keyword">return</span> <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">for</span>(String s : strings)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(!isValid6(s)) <span class="keyword">return</span> <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;IPv6&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid4</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s.length();</span><br><span class="line">        <span class="keyword">if</span>(len==<span class="number">0</span> || len&gt;<span class="number">3</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; i++) <span class="keyword">if</span>(s.charAt(i)&lt;<span class="string">&#x27;0&#x27;</span> || s.charAt(i)&gt;<span class="string">&#x27;9&#x27;</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(len&gt;<span class="number">1</span> &amp;&amp; s.charAt(<span class="number">0</span>)==<span class="string">&#x27;0&#x27;</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> t = Integer.valueOf(s);</span><br><span class="line">        <span class="keyword">if</span>(t&lt;<span class="number">0</span> || t&gt;<span class="number">255</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid6</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s.length();</span><br><span class="line">        <span class="keyword">if</span>(len==<span class="number">0</span> || len&gt;<span class="number">4</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">            <span class="keyword">char</span> t = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span>(!((t&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;t&lt;=<span class="string">&#x27;9&#x27;</span>) || (t&gt;=<span class="string">&#x27;a&#x27;</span>&amp;&amp;t&lt;=<span class="string">&#x27;f&#x27;</span>) || (t&gt;=<span class="string">&#x27;A&#x27;</span>&amp;&amp;t&lt;=<span class="string">&#x27;F&#x27;</span>))) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里需要注意的地方有两个：<code>split()</code>里面用到的分隔符必须使用转义符号，”\.”和”\:”,另外一个就是，以’.’或’:’结尾的字符串，最后不会生成一个空的字符串出来，如果是在中间是会这样的，但在末尾不会。</p>
+<p><strong>代码</strong> <code>t100 s59</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">validIPAddress</span><span class="params">(string IP)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        string t = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="function">istringstream <span class="title">is</span><span class="params">(IP)</span></span>;</span><br><span class="line">        <span class="keyword">if</span>(IP.<span class="built_in">find</span>(<span class="string">&#x27;:&#x27;</span>) == string::npos)&#123;</span><br><span class="line">            <span class="keyword">while</span>(<span class="built_in">getline</span>(is, t, <span class="string">&#x27;.&#x27;</span>))&#123;</span><br><span class="line">                ++ cnt;</span><br><span class="line">                <span class="keyword">if</span>(cnt&gt;<span class="number">4</span> || t.<span class="built_in">size</span>()&gt;<span class="number">3</span> || t.<span class="built_in">empty</span>() || (t.<span class="built_in">size</span>()&gt;<span class="number">1</span> &amp;&amp; t[<span class="number">0</span>]==<span class="string">&#x27;0&#x27;</span>)) <span class="keyword">return</span> <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">char</span> c : t)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(c &lt; <span class="string">&#x27;0&#x27;</span> || c &gt; <span class="string">&#x27;9&#x27;</span>) <span class="keyword">return</span> <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">stoi</span>(t)&lt;<span class="number">0</span> || <span class="built_in">stoi</span>(t)&gt;<span class="number">255</span>)  <span class="keyword">return</span> <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> (cnt==<span class="number">4</span> &amp;&amp; IP.<span class="built_in">back</span>()!=<span class="string">&#x27;.&#x27;</span>) ? <span class="string">&quot;IPv4&quot;</span> : <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">while</span>(<span class="built_in">getline</span>(is, t, <span class="string">&#x27;:&#x27;</span>))&#123;</span><br><span class="line">                ++ cnt;</span><br><span class="line">                <span class="keyword">if</span>(cnt&gt;<span class="number">8</span> || t.<span class="built_in">empty</span>() || t.<span class="built_in">size</span>()&gt;<span class="number">4</span>) <span class="keyword">return</span> <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">char</span> c : t)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(!(<span class="string">&#x27;0&#x27;</span>&lt;=c &amp;&amp; c&lt;=<span class="string">&#x27;9&#x27;</span>) &amp;&amp; !(<span class="string">&#x27;a&#x27;</span>&lt;=c &amp;&amp; c&lt;=<span class="string">&#x27;f&#x27;</span>) &amp;&amp; !(<span class="string">&#x27;A&#x27;</span>&lt;=c &amp;&amp; c&lt;=<span class="string">&#x27;F&#x27;</span>)) <span class="keyword">return</span> <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> (cnt == <span class="number">8</span> &amp;&amp; IP.<span class="built_in">back</span>() != <span class="string">&#x27;:&#x27;</span>) ? <span class="string">&quot;IPv6&quot;</span> : <span class="string">&quot;Neither&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/05/27/%E9%9D%A2%E8%AF%95%E9%A2%9808-13-%E5%A0%86%E7%AE%B1%E5%AD%90/" rel="next" title="面试题 08.13. 堆箱子">
+                <i class="fa fa-chevron-left"></i> 面试题 08.13. 堆箱子
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/06/08/1249-%E7%A7%BB%E9%99%A4%E6%97%A0%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" rel="prev" title="1249. 移除无效的括号">
+                1249. 移除无效的括号 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">175</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
